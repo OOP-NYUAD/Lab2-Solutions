@@ -15,3 +15,62 @@ second values. The class Time contains the following members:
       
 Write a simple tester program to test the Time class.
 */
+
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+class Time{
+  int hour, min, sec;
+
+  public:
+  Time(int hour = 0, int min = 0, int sec = 0){
+    this->hour = hour;
+    this->min  =  min;
+    this->sec  =  sec;
+  }
+  
+  void setHour(int hour){
+    this->hour = hour;
+  }
+  void setMin(int min){
+    this->min = min;
+  }
+  void setSec(int sec){
+    this->sec = sec;
+  }
+
+  void setTime(int hour = 0, int min = 0, int sec = 0){
+    this->hour = hour;
+    this->min  =  min;
+    this->sec  =  sec;
+  }
+
+  int getHour() { return hour; }
+  int getMin()  { return  min; }
+  int getSec()  { return  sec; }
+
+  void print(){
+    cout << setfill('0') << setw(2) << hour << ':' 
+         << setfill('0') << setw(2) << min  << ':' 
+         << setfill('0') << setw(2) << sec << '\n';
+  }
+
+  void nextSecond(){
+    sec++;
+
+    if(sec == 60){
+      sec = 0;
+      min++;
+    }
+    if(min == 60){
+      min = 0;
+      hour++;
+    }
+    if(hour == 24){
+      hour = 0;
+    }
+  }
+
+};
